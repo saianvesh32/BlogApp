@@ -1,0 +1,112 @@
+###user registration
+post http://localhost:7000/user-api/user
+Content-Type: application/json
+
+{
+    "userType":"user",
+    "username":"ravi",
+    "password":"ravi",
+    "email":"ravi@gmail.com"
+}
+
+
+###user login
+post http://localhost:7000/user-api/login
+Content-Type: application/json
+
+{
+    "userType":"user",
+    "username":"ravi",
+    "password":"ravi"
+}
+###author registration
+post http://localhost:7000/author-api/user
+Content-Type: application/json
+
+{
+    "userType":"author",
+    "username":"bhanu",
+    "password":"bhanu",
+    "email":"bhanu@gmail.com"
+}
+
+###author login
+post http://localhost:7000/author-api/login
+Content-Type: application/json
+
+{
+    "userType":"author",
+    "username":"bhanu",
+    "password":"bhanu"
+}
+
+### add new articles
+
+post http://localhost:4000/author-api/new-article
+Content-Type: application/json
+
+{
+    "articleId":"{{$timestamp}}",
+   "title":"Fundamentals of JavaScript",
+   "category":"programming",
+   "content":"JavaScript's dynamic capabilities include runtime object construction, variable parameter lists, function variables, dynamic script creation object introspection (via for...in and Object utilities, and source-code recovery JavaScript functions store their source text and can be retrieved ",
+   "dateOfCreation":"{{$datetime iso8601}}",
+   "dateOfModification":"{{$datetime iso8601}}",
+   "username":"bhanu",
+   "comments": [ ],
+   "status":true
+}
+
+
+### read articles by author's username
+
+get http://localhost:4000/author-api/articles/bhanu
+
+###edit article
+
+put http://localhost:4000/author-api/article
+Content-Type: application/json
+
+{
+    "articleId":"1709649538",
+   "title":"Fundamentals of JavaScript",
+   "category":"programming",
+   "content":"dynamic capabilities include runtime object construction, variable parameter lists, function variables, dynamic script creation object introspection (via for...in and Object utilities, and source-code recovery JavaScript functions store their source text and can be retrieved ",
+   "dateOfCreation":"2024-03-05T14:38:58.921Z",
+   "dateOfModification":"{{$datetime iso8601}}",
+   "username":"bhanu",
+   "comments": [ ],
+   "status":true
+}
+
+
+###delete article
+
+put http://localhost:7000/author-api/article/1709649538
+Content-Type: application/json
+
+{
+    "articleId":"1709649538",
+   "title":"Fundamentals of JavaScript",
+   "category":"programming",
+   "content":"dynamic capabilities include runtime object construction, variable parameter lists, function variables, dynamic script creation object introspection (via for...in and Object utilities, and source-code recovery JavaScript functions store their source text and can be retrieved ",
+   "dateOfCreation":"2024-03-05T14:38:58.921Z",
+   "dateOfModification":"{{$datetime iso8601}}",
+   "username":"bhanu",
+   "comments": [ ],
+   "status":false
+}
+
+###read articles by users
+
+get http://localhost:4000/user-api/articles
+
+###adding comments
+
+post http://localhost:4000/user-api/comment/1709896805
+Content-Type: application/json
+
+{
+    "username":"ravi",
+    "comment":"wow amazing comment"
+}
